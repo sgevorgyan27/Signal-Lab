@@ -1,14 +1,15 @@
 # Signal Lab — Submission Checklist
 
-Заполни поля **`(указать при сдаче)`** перед отправкой работодателю. Остальное уже привязано к этому репозиторию.
+Перед отправкой проверь блок **«Репозиторий»** (часы — своя оценка) и при необходимости блок **«+4 часа»**.
 
 ---
 
 ## Репозиторий
 
-- **URL**: `(указать при сдаче — git remote или архив)`
-- **Ветка**: `(указать при сдаче, напр. main)`
-- **Время работы** (приблизительно): `(указать при сдаче)` часов
+- **URL (HTTPS)**: https://github.com/sgevorgyan27/Signal-Lab
+- **URL (SSH)**: `git@github-sgevorgyan27:sgevorgyan27/Signal-Lab.git` *(как в `origin`; стандартный вид: `git@github.com:sgevorgyan27/Signal-Lab.git`)*
+- **Ветка**: `main`
+- **Время работы** (приблизительно, **скорректируй под себя**): ~14 часов
 
 ---
 
@@ -155,10 +156,10 @@ docker compose down -v
 
 ## Скриншоты / видео
 
-- [ ] UI приложения
-- [ ] Grafana dashboard с данными
-- [ ] Loki logs
-- [ ] Sentry error
+- [x] UI приложения
+- [x] Grafana dashboard с данными
+- [x] Loki logs
+- [x] Sentry error
 
 Файлы в **`docs/screenshots/`** (если подпись не совпадает с картинкой — переставь пути):
 
@@ -171,7 +172,9 @@ docker compose down -v
 
 ## Что не успел и что сделал бы первым при +4 часах
 
-`(опционально заполни при сдаче)`
+1. E2E по критическому пути (Playwright): сценарии UI → API → метрика/лог в Grafana.
+2. Алерты в Grafana/Prometheus по `scenario_runs_total` и ошибкам (notification channel).
+3. Rate limiting / базовая защита публичного API и smoke-тесты в CI.
 
 ---
 
