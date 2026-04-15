@@ -1,0 +1,12 @@
+---
+description: Next.js frontend patterns — RHF, TanStack Query, shadcn
+globs: apps/frontend/**/*
+alwaysApply: false
+---
+
+# Frontend patterns
+
+- **Server state:** TanStack Query (`useQuery` / `useMutation`). Invalidate or refetch after mutations (e.g. scenario run list).
+- **Forms:** React Hook Form + zod + `@hookform/resolvers/zod`. Keep shared API base in `lib/api.ts` (`NEXT_PUBLIC_API_URL`).
+- **UI:** shadcn components from `components/ui`. Tailwind for layout; avoid inline style sprawl.
+- API paths are under **`/api/...`** on the Nest server (port 3001 by default).

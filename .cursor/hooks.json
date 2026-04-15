@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "hooks": {
+    "postToolUse": [
+      {
+        "command": "node .cursor/hooks/prisma-reminder.mjs",
+        "matcher": "Write"
+      }
+    ],
+    "beforeShellExecution": [
+      {
+        "command": "node .cursor/hooks/git-commit-env-guard.mjs",
+        "matcher": "git commit"
+      }
+    ]
+  }
+}

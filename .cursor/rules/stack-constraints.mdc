@@ -1,0 +1,14 @@
+---
+description: Signal Lab mandatory stack — do not swap libraries without explicit user approval
+alwaysApply: true
+---
+
+# Stack constraints
+
+- **Frontend:** Next.js App Router, shadcn/ui, Tailwind, TanStack Query, React Hook Form (with zod resolver). No Redux, no SWR, no other UI kit.
+- **Backend:** NestJS + TypeScript strict. No Fastify/Express-only replacement of the framework.
+- **Data:** PostgreSQL + Prisma only. No TypeORM/Drizzle unless the user explicitly requests a documented exception.
+- **Observability:** Prometheus metrics, JSON logs (pino) for Loki, Sentry for exceptions — follow `observability-conventions.mdc` when touching API behavior.
+- **Infra:** Docker Compose for the full demo stack.
+
+If the user asks for a stack change, refuse by default and ask them to confirm they accept rubric penalties from `ASSIGNMENT.md`.

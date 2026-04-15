@@ -1,0 +1,12 @@
+---
+description: Prisma usage for Signal Lab — migrations and safe patterns
+globs: prisma/**/*
+alwaysApply: false
+---
+
+# Prisma patterns
+
+- Schema lives in **`prisma/schema.prisma`** at repo root. After edits: `npm run prisma:migrate` (dev) or `npm run prisma:deploy` (CI/containers).
+- Use `PrismaService` (global) in Nest; do not instantiate `PrismaClient` in random services.
+- Avoid raw SQL unless the user explicitly needs it; prefer typed queries and small transactions.
+- Never commit secrets in `DATABASE_URL`; use `.env` / Compose env (see `.env.example`).

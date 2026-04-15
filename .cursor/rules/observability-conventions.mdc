@@ -1,0 +1,21 @@
+---
+description: Metrics, logs, and Sentry conventions for Signal Lab backend
+globs: apps/backend/**/*.ts
+alwaysApply: false
+---
+
+# Observability conventions
+
+## Prometheus
+
+- Counters/histograms live in `MetricsService` (`prom-client`). Reuse labels: `scenario_runs_total{type,status}`, `scenario_run_duration_seconds{type}`, `http_requests_total{method,path,status_code}`.
+- Expose scrape at **`GET /metrics`** (no `/api` prefix). Register new domain metrics in the same registry, not ad-hoc endpoints.
+
+## Logs (Loki)
+
+- Scenario logs go through **`ScenarioLogService`** (pino JSON). Every run must emit at least one line with **`scenarioType`**, **`scenarioId`**, **`duration`**, and **`error`** when applicable. Keep `app: "signal-lab"` in the base object.
+- Prefer `context: "scenario"` on scenario lines so Grafana/Loki queries stay simple.
+
+## Sentry
+
+- Initialize only when `SENTRY_DSN` is set. Use `Sentry.captureException` for unhandled/demo server errors (e.g. `system_error` scenario). Optional breadcrumbs for client-side validation paths.

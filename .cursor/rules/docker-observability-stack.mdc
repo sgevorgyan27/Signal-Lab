@@ -1,0 +1,11 @@
+---
+description: Docker Compose services for Postgres, app, Prometheus, Grafana, Loki, Promtail
+globs: docker-compose.yml
+alwaysApply: false
+---
+
+# Observability stack (Compose)
+
+- **Do not** move Prometheus scrape off `backend:3001` `/metrics` without updating `observability/prometheus/prometheus.yml`.
+- Grafana is on host **3002**; UI proxies **`/grafana`** from Next using `GRAFANA_BROWSER_ORIGIN`.
+- Loki is **3100**; Promtail ships **backend** container logs; label **`compose_service=backend`** is used in Loki queries.

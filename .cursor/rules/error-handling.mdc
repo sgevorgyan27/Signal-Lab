@@ -1,0 +1,10 @@
+---
+description: HTTP errors and API responses — Nest and Next
+alwaysApply: true
+---
+
+# Error handling
+
+- **Nest:** Use Nest HTTP exceptions (`BadRequestException`, `InternalServerErrorException`, `HttpException`). Global filter preserves object bodies for special cases (e.g. HTTP 418 teapot payload).
+- **Never** leak stack traces in JSON responses for expected demo scenarios; log details with pino / Sentry instead.
+- **Frontend:** Surface API errors via toast; refetch run history on settled mutation so failed runs still appear when the backend persisted them.
